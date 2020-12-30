@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/editable.css">
+    
+    <title>Day_17</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>x-editable</h1>
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Firstname:</strong> <span editable="text" onSuccess="saveFirstName" onCancel="cancelFirstName">Anna</span> 
+            </li>
+            <li class="list-group-item">
+                <strong>Lastname:</strong> <span editable="text">Azarova</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Age:</strong> <span editable="number"></span>
+            </li>
+            <li class="list-group-item">
+                <strong>Email:</strong> <a href="#" editable="email">anna@gmail.com</a>
+            </li>
+            <li class="list-group-item">
+                <strong>Password:</strong> <span editable="password">12345678</span>
+            </li>
+        </ul>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span editable="text">John</span></td>
+                    <td><a href="#" editable="text">Doe</a></td>
+                </tr>
+                <tr>
+                    <td><span editable="text">Harry</span></td>
+                    <td><a href="#" editable="text">Potter</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+[editable] {
+    text-decoration: none;
+    color: #428bca;
+    border-bottom: 1px dashed #428bca;
+    cursor: pointer;
+}
+
+[editable]:hover {
+    text-decoration: none;
+    color: #23527c;
+    border-bottom: 1px dashed #23527c;
+}
+
+[editable]:empty::before {
+    content: 'Not set';
+    font-style: italic;
+    color: #DD1144;
+    border-bottom: 1px dashed #DD1144;
+}
