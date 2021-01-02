@@ -13,8 +13,26 @@ function handleClick(event) {
 
     const type = originalElement.getAttribute('editable');
 
+    const spanElement = document.createElement('span');
     const inputElement = document.createElement('input');
-    originalElement.after(inputElement);
+    const saveButton = document.createElement('button');
+    const cancelButton = document.createElement('button');
+    saveButton.className = 'btn btn-primary';
+    cancelButton.className = 'btn btn-danger';
+    
+    saveButton.innerText = '✔';
+    cancelButton.innerText = '✘';
+
+
+    saveButton.setAttribute('style', 'padding: 3px 10px; margin: 0 10px; font-wegth');
+    cancelButton.setAttribute('style', 'padding: 3px 10px;');
+
+    originalElement.after(spanElement);
+    spanElement.append(inputElement);
+    spanElement.append(saveButton);
+    spanElement.append(cancelButton);
+
+    // originalElement.after(spanElement);
     inputElement.value = originalElement.innerText;
     inputElement.setAttribute('type', type);
     // inputElement.focus(); - ставить сразу курсор в инпуте 
@@ -24,14 +42,30 @@ function handleClick(event) {
     inputElement.addEventListener('keyup', function(event) {
         switch (event.key) {
             case 'Enter': 
-                inputElement.after(originalElement);
-                originalElement.innerText = inputElement.value;
-                inputElement.remove();
+                saveValue();
                 break;
             case 'Escape': 
-                inputElement.after(originalElement);
-                inputElement.remove();
+                cancelValue();
                 break;
         }
-    })
+    });
+
+    saveButton.addEventListener('click', function(event) {
+        saveValue();
+    });
+
+    cancelButton.addEventListener('click', function(event) {
+        cancelValue();
+    });
+
+    function saveValue() {
+        spanElement.after(originalElement);
+        originalElement.innerText = inputElement.value;
+        spanElement.remove();
+    }
+
+    function cancelValue() {
+        spanElement.after(originalElement);
+        spanElement.remove();
+    }
 }
